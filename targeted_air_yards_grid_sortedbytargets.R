@@ -9,8 +9,7 @@
 source('https://github.com/ajreinhard/data-viz/raw/master/ggplot/plot_SB.R')
 
 pbp_df <- load_pbp(2022)  %>% 
-  decode_player_ids() |>
-  filter(week == 5)
+  decode_player_ids() 
 roster_df <- fast_scraper_roster(2022) |>
   select(-week)
 
@@ -38,7 +37,7 @@ grob_df <- player_df %>%
 #should be changing the headshots from url to working size for graphs
 #grob_df$grob <- sapply(1:nrow(grob_df), function(x) grob_img_adj(grob_df$headshot_url[x], alpha = grob_df$alpha[x]))
 
-my_week <- 4
+my_week <- 11
 
 p <- pbp_df %>% 
   filter(!is.na(air_yards) & !is.na(receiver_id) & air_yards <= 70 & air_yards >= -15) %>% 
